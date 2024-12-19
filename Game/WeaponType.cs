@@ -1,4 +1,4 @@
-namespace AlienBreed.Game;
+namespace AlienQuest.Game;
 
 public enum WeaponType
 {

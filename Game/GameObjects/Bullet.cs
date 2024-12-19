@@ -2,7 +2,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AlienBreed.Game.GameObjects;
+namespace AlienQuest.Game.GameObjects;
 
 public class Bullet:GameObject
 {

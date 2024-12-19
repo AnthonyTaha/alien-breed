@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace AlienBreed.Game;
+namespace AlienQuest.Game;
 
 public class AnimationPlayer
 {

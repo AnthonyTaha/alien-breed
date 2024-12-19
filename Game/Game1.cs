@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace AlienBreed.Game;
+namespace AlienQuest.Game;
 
 public class Game1 : Microsoft.Xna.Framework.Game
 {

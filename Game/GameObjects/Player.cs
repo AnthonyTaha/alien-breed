@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace AlienBreed.Game.GameObjects;
+namespace AlienQuest.Game.GameObjects;
 
 public class Player:GameObject
 {

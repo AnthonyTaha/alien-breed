@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace AlienBreed.Game.GameObjects;
+namespace AlienQuest.Game.GameObjects;
 
 public class Explosion:GameObject
 {

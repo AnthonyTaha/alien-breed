@@ -3,7 +3,7 @@ using System.IO;
 using System.Xml;
 using Microsoft.Xna.Framework.Content;
 
-namespace AlienBreed.Game;
+namespace AlienQuest.Game;
 
 public class PlayerLoader
 {

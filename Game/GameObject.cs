@@ -1,10 +1,10 @@
 using System;
-using AlienBreed;
+using AlienQuest;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace AlienBreed.Game;
+namespace AlienQuest.Game;
 
 public class GameObject
 {

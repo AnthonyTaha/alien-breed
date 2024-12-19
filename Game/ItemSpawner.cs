@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AlienBreed.Game.GameObjects;
+using AlienQuest.Game.GameObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AlienBreed.Game;
+namespace AlienQuest.Game;
 
 public class ItemSpawner
 {

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/level"
+           xmlns="http://example.com/level"
+           elementFormDefault="qualified">
+    <xs:element name="level">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="player">
+                    <xs:complexType>
+                        <xs:attribute name="x" type="xs:int" use="required"/>
+                        <xs:attribute name="y" type="xs:int" use="required"/>
+                        <xs:attribute name="name" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="tileset" type="xs:string"/>
+                <xs:element name="tileSize">
+                    <xs:complexType>
+                        <xs:attribute name="width" type="xs:int" use="required"/>
+                        <xs:attribute name="height" type="xs:int" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="collisionMask" type="xs:string"/>
+                <xs:element name="enemies">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="enemy" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:attribute name="x" type="xs:int" use="required"/>
+                                    <xs:attribute name="y" type="xs:int" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="map">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="row" type="xs:string" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                        <xs:attribute name="width" type="xs:int" use="required"/>
+                        <xs:attribute name="height" type="xs:int" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

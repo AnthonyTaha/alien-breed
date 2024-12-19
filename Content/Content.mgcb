@@ -14,4 +14,17 @@
 #---------------------------------- Content ---------------------------------#
 /importer:TextureImporter
 /processor:TextureProcessor
-/build:/Users/anthonytaha/RiderProjects/AlienBreed/Content/sprite.png
+/build:sprite_sheet.png
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/build:font.spritefont
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/build:shoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/build:explosion.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/build:powerup.wav

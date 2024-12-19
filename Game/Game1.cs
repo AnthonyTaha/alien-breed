@@ -1,26 +1,27 @@
-﻿using GameEngine;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace AlienBreed;
+namespace AlienBreed.Game;
 
-public class Game1 : Game
+public class Game1 : Microsoft.Xna.Framework.Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-    private GameObjectManager _gameObjectManager;
+    private LevelManager _levelManager;
+    private SpriteSheet _spriteSheet;
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+        _spriteSheet = new SpriteSheet();
     }
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
-        _gameObjectManager = new GameObjectManager();
+        _levelManager = new LevelManager();
+        
         base.Initialize();
         
     }
@@ -28,28 +29,24 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
-        Texture2D sprite = Content.Load<Texture2D>("sprite");
-        _gameObjectManager.addGameObject(new Player(sprite, new Vector2(150, 150),100));
+        _spriteSheet.LoadSheet(Content,"sprite_sheet",12,2);
+        _levelManager.LoadContent(Content,GraphicsDevice,_spriteSheet);
     }
 
     protected override void Update(GameTime gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-            Keyboard.GetState().IsKeyDown(Keys.Escape))
+            Keyboard.GetState().IsKeyDown(Keys.Escape) || _levelManager.GameState == GameState.Dead)
             Exit();
-        _gameObjectManager.updateGameObjects(gameTime);
-        // TODO: Add your update logic here
-
+        _levelManager.UpdateGameObjects(gameTime);
         base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
-
-        // TODO: Add your drawing code here
-        _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-        _gameObjectManager.drawGameObjects(_spriteBatch);
+        GraphicsDevice.Clear(Color.Black );
+        _spriteBatch.Begin(transformMatrix:_levelManager.Camera.GetTransformMatrix(),samplerState: SamplerState.PointClamp);
+        _levelManager.DrawGameObjects(_spriteBatch,_spriteSheet);
         _spriteBatch.End();
         base.Draw(gameTime);
     }

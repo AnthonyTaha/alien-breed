@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/players"
+           xmlns="http://example.com/players"
+           elementFormDefault="qualified">
+
+    <!-- Root Element -->
+    <xs:element name="players">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- Player Element -->
+                <xs:element name="player" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:attribute name="name" type="xs:string" use="required"/>
+                        <xs:attribute name="health" type="xs:int" use="required"/>
+                        <xs:attribute name="speed" type="xs:int" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

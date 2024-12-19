@@ -1,2 +1,2 @@
-﻿using var game = new AlienBreed.Game1();
+﻿using var game = new AlienBreed.Game.Game1();
 game.Run();

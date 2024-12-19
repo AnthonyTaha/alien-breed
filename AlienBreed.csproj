@@ -22,6 +22,11 @@
             <LogicalName>Icon.bmp</LogicalName>
         </EmbeddedResource>
     </ItemGroup>
+<ItemGroup>
+  <None Include="Content\*.xml">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  </None>
+</ItemGroup>
     <ItemGroup>
         <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.2.1105"/>
         <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.2.1105"/>

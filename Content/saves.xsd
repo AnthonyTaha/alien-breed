@@ -10,6 +10,7 @@
                     <xs:complexType>
                         <xs:attribute name="player" type="xs:string" use="required"/>
                         <xs:attribute name="score" type="xs:integer" use="required"/>
+                        <xs:attribute name="date" type="xs:dateTime" use="required"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>

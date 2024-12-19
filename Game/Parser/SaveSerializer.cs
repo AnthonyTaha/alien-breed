@@ -9,7 +9,7 @@ namespace AlienQuest.Game.Parser;
 
 public class SaveSerializer
 {
-    public static void SerializeSave(ContentManager contentManager,int gameScore, string playerName)
+    public static void SerializeSave(ContentManager contentManager,int gameScore, String playerName,String dateTime)
     {
         XmlDocument doc = new XmlDocument();
         doc.Load(contentManager.RootDirectory+"/saves.xml");
@@ -21,19 +21,19 @@ public class SaveSerializer
         Saves saves = new Saves();
         if (saveNodes != null)
         {
-            
             foreach (XmlNode saveNode in saveNodes)
             {
                 Console.WriteLine("test");
-                Save save = new Save(saveNode.Attributes["player"]?.Value,int.Parse(saveNode.Attributes["score"]?.Value));
+                Save save = new Save(saveNode.Attributes["player"]?.Value,
+                    int.Parse(saveNode.Attributes["score"]?.Value),saveNode.Attributes["date"]?.Value);
                 
                 saves.saves.Add(save);
             }
         }
-        saves.saves.Add(new Save(playerName, gameScore));
+        saves.saves.Add(new Save(playerName, gameScore,dateTime));
         XmlSerializer serializer = new XmlSerializer(typeof(Saves));
         TextWriter textWriter = new StreamWriter(contentManager.RootDirectory+"/saves.xml");
         serializer.Serialize(textWriter, saves);
-        textWriter.Close(); 
+        textWriter.Close();
     }
 }

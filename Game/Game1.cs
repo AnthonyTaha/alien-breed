@@ -1,4 +1,5 @@
-﻿using AlienQuest.Game.Parser;
+﻿using System;
+using AlienQuest.Game.Parser;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -41,7 +42,8 @@ public class Game1 : Microsoft.Xna.Framework.Game
             Exit();
         if (_levelManager.GameState == GameState.Dead)
         {
-            SaveSerializer.SerializeSave(Content,_levelManager.Score,_levelManager.Player.Name);
+            SaveSerializer.SerializeSave(Content,_levelManager.Score,_levelManager.Player.Name,
+                DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"));
             Exit();
         }
         _levelManager.UpdateGameObjects(gameTime);

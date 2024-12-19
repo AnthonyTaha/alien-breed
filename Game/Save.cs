@@ -8,11 +8,14 @@ public class Save
     public String Player;
     [XmlAttribute("score")] 
     public int Score;
+    [XmlAttribute("date")]
+    public String Date;
 
     public Save(){}
-    public Save(string playerName, int score)
+    public Save(String playerName, int score, String date)
     {
         Player = playerName;
         Score = score;
+        Date = date;
     }
 }

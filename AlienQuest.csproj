@@ -48,7 +48,6 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Assets\" />
-      <Folder Include="Content\xslt\" />
       <Folder Include="Game\Engine\" />
     </ItemGroup>
     <Target Name="RestoreDotnetTools" BeforeTargets="Restore">

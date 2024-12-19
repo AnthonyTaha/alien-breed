@@ -22,7 +22,7 @@ public class LevelManager
     private int _screenWidth, _screenHeight;
     
     private int _score;
-    private int _scoreInterval = 0;
+    private int _scoreInterval;
     private int _scoreIntervalCap = 100;
     private int _scoreIncreaseAmount = 10;
     
@@ -38,13 +38,10 @@ public class LevelManager
     public int ScreenWidth => _screenWidth;
     public int ScreenHeight => _screenHeight;
     public GameState GameState => _gameState;
-
     public SoundEffect ExplosionSoundEffect => _explosionSoundEffect;
-
     public SoundEffect FiringSoundEffect => _firingSoundEffect;
-
     public SoundEffect PowerUpSoundEffect => _powerUpSoundEffect;
-
+    public int Score => _score;
     public void LoadContent(ContentManager content,GraphicsDevice graphics, SpriteSheet spriteSheet)
     {
         _gameState = GameState.Playing;
@@ -58,8 +55,7 @@ public class LevelManager
         //Screen Dimensions
         _screenWidth = graphics.Viewport.Width;
         _screenHeight = graphics.Viewport.Height;
-
-
+        
         // Get position at bottom center
         float xPosition = _screenWidth / 2f;
         float yPosition = _screenHeight - 32;
@@ -86,7 +82,6 @@ public class LevelManager
     
     public void DrawGameObjects(SpriteBatch spriteBatch,SpriteSheet spriteSheet)
     {
-        
         foreach (GameObject gameObject in _gameObjects)
         {
             gameObject.Draw(spriteBatch,spriteSheet);

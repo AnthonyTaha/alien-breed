@@ -1,0 +1,7 @@
+<levelSettings xmlns="http://example.com/levelSettings"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://example.com/levelSettings level_settings.xsd">
+    <level playerYOffset="32" scoreInterval="100" loadFromSave="true">
+        <itemSpawner spawnInterval="100"/>
+    </level>
+</levelSettings>

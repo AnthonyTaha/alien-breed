@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -14,7 +15,7 @@ public class Bullet:GameObject
     public Bullet( Vector2 direction, float speed,bool isEnemy, Vector2 position) : base(17, position, new Vector2(2,2),new Vector2(16,16))
     {
         _direction = direction;
-        this._speed = speed;
+        _speed = speed;
         _isEnemy = isEnemy;
         _playerDamage = 5;
     }

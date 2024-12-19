@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AlienQuest.Game.Parser;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -36,8 +37,13 @@ public class Game1 : Microsoft.Xna.Framework.Game
     protected override void Update(GameTime gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-            Keyboard.GetState().IsKeyDown(Keys.Escape) || _levelManager.GameState == GameState.Dead)
+            Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
+        if (_levelManager.GameState == GameState.Dead)
+        {
+            SaveSerializer.SerializeSave(Content,_levelManager.Score,_levelManager.Player.Name);
+            Exit();
+        }
         _levelManager.UpdateGameObjects(gameTime);
         base.Update(gameTime);
     }

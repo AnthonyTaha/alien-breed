@@ -2,6 +2,6 @@
 <players xmlns="http://example.com/players"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://example.com/players players.xsd">
-    <player name="player1" health="100" speed="4" weaponCoolDown="5" powerUpCoolDown="6000"/>
+    <player name="player1" health="10" speed="4" weaponCoolDown="5" powerUpCoolDown="6000"/>
     <player name="player2" health="100" speed="4" weaponCoolDown="5" powerUpCoolDown="6000"/>
 </players>

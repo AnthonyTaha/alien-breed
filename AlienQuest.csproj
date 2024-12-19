@@ -19,6 +19,12 @@
         <None Update="Content\players.xsd">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+        <None Update="Content\saves.xml">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Content\saves.xsd">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Icon.ico">
@@ -42,6 +48,7 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Assets\" />
+      <Folder Include="Content\xslt\" />
       <Folder Include="Game\Engine\" />
     </ItemGroup>
     <Target Name="RestoreDotnetTools" BeforeTargets="Restore">

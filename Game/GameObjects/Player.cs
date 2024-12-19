@@ -12,15 +12,17 @@ public class Player:GameObject
 {
     private float _speed;
     private Weapon _weapon;
-    
+    private String _name;
     private PlayerLoader _playerLoader;
     private int _health;
     private Animation _idleAnimation;
     
     public int Health => _health;
+    public String Name => _name;
     
     public Player(Vector2 position,String name, ContentManager contentManager):base(2,position,new Vector2(2,2),new Vector2(16,24))
     {
+        _name = name;
         _playerLoader = new PlayerLoader();
         _playerLoader.LoadPlayer(name,contentManager);
         _health = _playerLoader.Health;

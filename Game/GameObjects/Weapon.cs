@@ -49,7 +49,7 @@ public class Weapon
             }
             else
             {
-                levelManager.AddGameObject(new Bullet(new Vector2(0, 1), _speed,false,startingPosition));
+                levelManager.AddGameObject(new Bullet(new Vector2(0, 1), _speed,true,startingPosition));
             }
             
             _currentCoolDown = 0;

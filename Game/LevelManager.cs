@@ -18,7 +18,6 @@ public class LevelManager
     private Player _player;
     
     private ItemSpawner _itemSpawner;
-    private PlayerLoader _playerLoader;
     
     private int _screenWidth, _screenHeight;
     
@@ -56,18 +55,17 @@ public class LevelManager
         _explosionSoundEffect = content.Load<SoundEffect>("audio/explosion");
         _powerUpSoundEffect = content.Load<SoundEffect>("audio/powerup");
         
-        _playerLoader = new PlayerLoader();
-        _playerLoader.LoadPlayer("player1",content);
-        
-        // Get screen dimensions
+        //Screen Dimensions
         _screenWidth = graphics.Viewport.Width;
         _screenHeight = graphics.Viewport.Height;
 
 
-        // Calculate position to center at the bottom
+        // Get position at bottom center
         float xPosition = _screenWidth / 2f;
         float yPosition = _screenHeight - 32;
-        _player = new Player(new Vector2(xPosition,yPosition),_playerLoader.Speed);
+        _player = new Player(new Vector2(xPosition,yPosition),"player1",content);
+        
+        //Setup Item Spawner
         _itemSpawner = new ItemSpawner(100);
         
         AddGameObject(_player);

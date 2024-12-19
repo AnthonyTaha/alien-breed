@@ -6,21 +6,22 @@ namespace AlienQuest.Game.GameObjects;
 
 public class Bullet:GameObject
 {
-    public Vector2 Direction { get; private set; }
-    public float Speed { get; private set; }
+    private Vector2 _direction;
+    private float _speed;
     private bool _isEnemy;
+    private int _playerDamage;
     
-    public Bullet( Vector2 direction, float speed,int currentFrame,bool isEnemy, Vector2 position, Vector2 size, Vector2 spriteSize) : base(currentFrame, position, size, spriteSize)
+    public Bullet( Vector2 direction, float speed,bool isEnemy, Vector2 position) : base(17, position, new Vector2(2,2),new Vector2(16,16))
     {
-        this.Direction = direction;
-        this.Speed = speed;
+        _direction = direction;
+        this._speed = speed;
         _isEnemy = isEnemy;
+        _playerDamage = 5;
     }
 
     public override void Update(GameTime gameTime, LevelManager levelManager)
     {
-        // Update bullet position
-        Position += Direction * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+        Position += _direction * _speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
         if (!_isEnemy)
         {
             foreach (Enemy enemy in levelManager.GameObjects.OfType<Enemy>().ToList())
@@ -39,7 +40,7 @@ public class Bullet:GameObject
         {
             if (levelManager.Player.Rect.Intersects(Rect))
             {
-                levelManager.Player.Health--;
+                levelManager.Player.Damage(_playerDamage);
                 levelManager.RemoveGameObject(this);
             }
         }

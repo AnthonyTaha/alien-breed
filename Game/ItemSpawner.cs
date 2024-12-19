@@ -57,7 +57,7 @@ public class ItemSpawner
     }
     public void AddEnemy(LevelManager levelManager)
     {
-        float xPosition = _random.Next(0, (int)(levelManager.ScreenWidth - (_enemyShipSize.X*_enemyShipSpriteSize.X)));
+        float xPosition = _random.Next((int)(_enemyShipSize.X*_enemyShipSpriteSize.X), (int)(levelManager.ScreenWidth - (_enemyShipSize.X*_enemyShipSpriteSize.X)));
         Vector2 startPosition = new Vector2(xPosition, -(_enemyShipSize.Y*_enemyShipSpriteSize.Y));
         levelManager.AddGameObject(new Enemy(5,startPosition,_enemyShipSize,_enemyShipSpriteSize));
     }

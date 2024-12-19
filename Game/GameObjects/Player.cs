@@ -12,14 +12,20 @@ public class Player:GameObject
 {
     private float _speed;
     private Weapon _weapon;
-    public int Health { get; set; }
+    
+    private PlayerLoader _playerLoader;
+    private int _health;
     private Animation _idleAnimation;
     
-    public Player(Vector2 position,float speed):base(2,position,new Vector2(2,2),new Vector2(16,24))
+    public int Health => _health;
+    
+    public Player(Vector2 position,String name, ContentManager contentManager):base(2,position,new Vector2(2,2),new Vector2(16,24))
     {
-        Health = 30;
-        _speed = speed;
-        _weapon = new Weapon(5,300,6000);
+        _playerLoader = new PlayerLoader();
+        _playerLoader.LoadPlayer(name,contentManager);
+        _health = _playerLoader.Health;
+        _speed =_playerLoader.Speed ;
+        _weapon = new Weapon(_playerLoader.WeaponCoolDown,300,_playerLoader.PowerUpCoolDown);
         _idleAnimation = new Animation(new []{1,2},200);
         Sprite.AnimationPlayer.Play(_idleAnimation);
     }
@@ -43,13 +49,17 @@ public class Player:GameObject
             levelManager.FiringSoundEffect.Play();
         }
         
-        if (Health <= 0)
+        if (_health <= 0)
         {
             levelManager.PlayerDeath();
         }
         _weapon.updatePowerUpCoolDown(gameTime);
     }
 
+    public void Damage(int damage)
+    {
+        _health-=damage;
+    }
     public void PowerUp()
     {
         _weapon.PowerUp();

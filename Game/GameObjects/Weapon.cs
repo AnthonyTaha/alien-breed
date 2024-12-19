@@ -39,22 +39,17 @@ public class Weapon
         {
             if (_weaponType == WeaponType.Default)
             {
-                levelManager.AddGameObject(new Bullet(new Vector2(0, -1), _speed,17,false,startingPosition,
-                    new Vector2(2,2),new Vector2(16,16)));
+                levelManager.AddGameObject(new Bullet(new Vector2(0, -1), _speed,false,startingPosition));
             }
             else if(_weaponType == WeaponType.PowerUp)
             {
-                levelManager.AddGameObject(new Bullet(new Vector2(1, -1), _speed,17,false,startingPosition,
-                    new Vector2(2,2),new Vector2(16,16)));
-                levelManager.AddGameObject(new Bullet(new Vector2(0, -1), _speed,17,false,startingPosition,
-                    new Vector2(2,2),new Vector2(16,16)));
-                levelManager.AddGameObject(new Bullet(new Vector2(-1, -1), _speed,17,false,startingPosition,
-                    new Vector2(2,2),new Vector2(16,16)));
+                levelManager.AddGameObject(new Bullet(new Vector2(1, -1), _speed,false,startingPosition));
+                levelManager.AddGameObject(new Bullet(new Vector2(0, -1), _speed,false,startingPosition));
+                levelManager.AddGameObject(new Bullet(new Vector2(-1, -1), _speed,false,startingPosition));
             }
             else
             {
-                levelManager.AddGameObject(new Bullet(new Vector2(0, 1), _speed,17,true,startingPosition,
-                    new Vector2(2,2),new Vector2(16,16)));
+                levelManager.AddGameObject(new Bullet(new Vector2(0, 1), _speed,false,startingPosition));
             }
             
             _currentCoolDown = 0;

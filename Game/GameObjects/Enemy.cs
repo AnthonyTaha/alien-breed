@@ -38,7 +38,7 @@ public class Enemy:GameObject
         
         if (levelManager.Player.Rect.Intersects(Rect))
         {
-            levelManager.Player.Health-=10;
+            levelManager.Player.Damage(10);
             levelManager.ExplosionSoundEffect.Play();
             levelManager.RemoveGameObject(this);
         }

@@ -9,32 +9,24 @@ namespace AlienBreed.Game;
 
 public class ItemSpawner
 {
-    private List<Enemy> _enemies;
-    private List<PowerUp> _powerUps;
     
     private Random _random;
     private float _spawnTimer;
     private float _spawnInterval;
-
-    private int _screenWidth, _screenHeight;
+    private float _minSpawnInterval;
+    
     
     private Vector2 _enemyShipSpriteSize;
-    private Vector2 _enemyObstacleSpriteSize;
-    
     private Vector2 _enemyShipSize;
-    private Vector2 _enemyObstacleSize;
 
-    public ItemSpawner(float spawnInterval, int screenWidth, int screenHeight)
+    public ItemSpawner(float spawnInterval)
     {
-        _enemies = new();
-        _powerUps = new();
         _random = new Random();
         _spawnTimer = 0f;
         _spawnInterval = spawnInterval;
-        _screenWidth = screenWidth;
-        _screenHeight = screenHeight;
         _enemyShipSpriteSize = new Vector2(16, 16);
         _enemyShipSize = new Vector2(2, 2);
+        _minSpawnInterval = 20;
     }
     public void Update(GameTime gameTime, LevelManager levelManager)
     {
@@ -43,76 +35,38 @@ public class ItemSpawner
         if (_spawnTimer >= _spawnInterval)
         {
             int itemChoice = _random.Next(0,100);
-            if (itemChoice <= 75)
+            if (itemChoice <= 90)
             {
-                AddEnemy();
+                AddEnemy(levelManager);
             }else
             {
-                AddPowerUp();
+                AddPowerUp(levelManager);
             }
-            
             _spawnTimer = 0f;
         }
         
-        foreach (Enemy enemy in _enemies.ToList())
-        {
-            enemy.Update(gameTime, levelManager);
-            if (enemy.Rect.Y > _screenHeight)
-            {
-                RemoveEnemy(enemy);
-            }
-        }
-        foreach (PowerUp powerUp in _powerUps.ToList())
-        {
-            powerUp.Update(gameTime, levelManager);
-            if (powerUp.Rect.Y > _screenHeight)
-            {
-                RemovePowerUp(powerUp);
-            }
-        }
     }
-
-    public void Draw(SpriteBatch spriteBatch, SpriteSheet spriteSheet)
-    {
-        foreach (Enemy enemy in _enemies)
-        {
-            enemy.Draw(spriteBatch,spriteSheet);
-        }
-
-        foreach (PowerUp powerUp in _powerUps)
-        {
-            powerUp.Draw(spriteBatch, spriteSheet);
-        }
-    }
+    
 
     public void DecreaseInterval()
     {
-        if (_spawnInterval > 50)
+        if (_spawnInterval > _minSpawnInterval)
         {
             _spawnInterval -= 10;
         }
     }
-    public void AddEnemy()
+    public void AddEnemy(LevelManager levelManager)
     {
-        float xPosition = _random.Next(0, (int)(_screenWidth - (_enemyShipSize.X*_enemyShipSpriteSize.X)));
+        float xPosition = _random.Next(0, (int)(levelManager.ScreenWidth - (_enemyShipSize.X*_enemyShipSpriteSize.X)));
         Vector2 startPosition = new Vector2(xPosition, -(_enemyShipSize.Y*_enemyShipSpriteSize.Y));
-        _enemies.Add(new Enemy(5,startPosition,_enemyShipSize,_enemyShipSpriteSize));
+        levelManager.AddGameObject(new Enemy(5,startPosition,_enemyShipSize,_enemyShipSpriteSize));
     }
-
-    public void RemoveEnemy(Enemy enemy)
+    
+    public void AddPowerUp(LevelManager levelManager)
     {
-        _enemies.Remove(enemy);
-    }
-    public void AddPowerUp()
-    {
-        float xPosition = _random.Next(0, (int)(_screenWidth - (_enemyShipSize.X*_enemyShipSpriteSize.X)));
+        float xPosition = _random.Next(0, (int)(levelManager.ScreenWidth - (_enemyShipSize.X*_enemyShipSpriteSize.X)));
         Vector2 startPosition = new Vector2(xPosition, -(_enemyShipSize.Y*_enemyShipSpriteSize.Y));
-        _powerUps.Add(new PowerUp(startPosition));
+        levelManager.AddGameObject(new PowerUp(startPosition));
     }
-
-    public void RemovePowerUp(PowerUp powerUp)
-    {
-        _powerUps.Remove(powerUp);
-    }
-    public Enemy[] GetEnemies() => _enemies.ToArray();
+    
 }

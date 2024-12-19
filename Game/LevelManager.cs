@@ -14,7 +14,7 @@ public class LevelManager
     private GameState _gameState;
     
     private Camera _camera = new();
-    private List<Bullet> _bullets = new();
+    private List<GameObject> _gameObjects = new();
     private Player _player;
     
     private ItemSpawner _itemSpawner;
@@ -26,16 +26,16 @@ public class LevelManager
     private int _scoreInterval = 0;
     private int _scoreIntervalCap = 100;
     private int _scoreIncreaseAmount = 10;
+    
     private SpriteFont _font;
     
     private SoundEffect _explosionSoundEffect;
     private SoundEffect _firingSoundEffect;
     private SoundEffect _powerUpSoundEffect;
     
+    public List<GameObject> GameObjects => _gameObjects;
     public Camera Camera => _camera;
-    public List<Bullet> Bullets => _bullets;
     public Player Player => _player;
-    public ItemSpawner ItemSpawner => _itemSpawner;
     public int ScreenWidth => _screenWidth;
     public int ScreenHeight => _screenHeight;
     public GameState GameState => _gameState;
@@ -51,13 +51,14 @@ public class LevelManager
         _gameState = GameState.Playing;
         
         //Load Content
-        _font = content.Load<SpriteFont>("font");
-        _firingSoundEffect = content.Load<SoundEffect>("shoot");
-        _explosionSoundEffect = content.Load<SoundEffect>("explosion");
-        _powerUpSoundEffect = content.Load<SoundEffect>("powerup");
+        _font = content.Load<SpriteFont>("font/font");
+        _firingSoundEffect = content.Load<SoundEffect>("audio/shoot");
+        _explosionSoundEffect = content.Load<SoundEffect>("audio/explosion");
+        _powerUpSoundEffect = content.Load<SoundEffect>("audio/powerup");
         
         _playerLoader = new PlayerLoader();
         _playerLoader.LoadPlayer("player1",content);
+        
         // Get screen dimensions
         _screenWidth = graphics.Viewport.Width;
         _screenHeight = graphics.Viewport.Height;
@@ -67,21 +68,20 @@ public class LevelManager
         float xPosition = _screenWidth / 2f;
         float yPosition = _screenHeight - 32;
         _player = new Player(new Vector2(xPosition,yPosition),_playerLoader.Speed);
+        _itemSpawner = new ItemSpawner(100);
         
-
-        _itemSpawner = new ItemSpawner(100,_screenWidth,_screenHeight);
+        AddGameObject(_player);
     }
     
     public void UpdateGameObjects(GameTime gameTime)
     {
-        _player.Update(gameTime,this);
         _camera.Update(gameTime);
         
         _itemSpawner.Update(gameTime,this);
 
-        foreach (Bullet bullet in _bullets.ToList())
+        foreach (GameObject gameObject in _gameObjects.ToList())
         {
-            bullet.Update(gameTime, this);
+            gameObject.Update(gameTime, this);
         }
         
     }
@@ -89,14 +89,13 @@ public class LevelManager
     public void DrawGameObjects(SpriteBatch spriteBatch,SpriteSheet spriteSheet)
     {
         
-        foreach (Bullet bullet in _bullets)
+        foreach (GameObject gameObject in _gameObjects)
         {
-            bullet.Draw(spriteBatch,spriteSheet);
+            gameObject.Draw(spriteBatch,spriteSheet);
         }
         
         _player.Draw(spriteBatch,spriteSheet);
         
-        _itemSpawner.Draw(spriteBatch,spriteSheet);
         spriteBatch.DrawString(_font, "Score: "+_score +" Health: "+_player.Health, new Vector2(10, _screenHeight-20), Color.White);
     }
 
@@ -107,18 +106,18 @@ public class LevelManager
         if (_scoreInterval > _scoreIntervalCap)
         {
             _scoreInterval = 0;
-            ItemSpawner.DecreaseInterval();
+            _itemSpawner.DecreaseInterval();
         }
     }
 
-    public void AddBullet(Bullet bullet)
+    public void AddGameObject(GameObject gameObject)
     {
-        _bullets.Add(bullet);
+        _gameObjects.Add(gameObject);
     }
 
-    public void RemoveBullet(Bullet bullet)
+    public void RemoveGameObject(GameObject gameObject)
     {
-        _bullets.Remove(bullet);
+        _gameObjects.Remove(gameObject);
     }
 
     public void PlayerDeath()

@@ -11,13 +11,23 @@ public class Sprite
     private Vector2 _size;
     private int _currentSprite;
     public Vector2 Size => _size;
+    
+    private AnimationPlayer _animationPlayer;
+    
+    public AnimationPlayer AnimationPlayer => _animationPlayer;
     public Sprite(int currentSprite, Vector2 size, Color color)
     {
         _currentSprite = currentSprite;
         _color = color;
         _size = size;
+        _animationPlayer = new AnimationPlayer(2);
     }
 
+    public void Update(GameTime gameTime)
+    {
+        _animationPlayer.Update(gameTime);
+        _currentSprite = _animationPlayer.CurrentFrame;
+    }
    
     public void Draw(SpriteBatch spriteBatch, SpriteSheet spriteSheet, Rectangle rect)
     {

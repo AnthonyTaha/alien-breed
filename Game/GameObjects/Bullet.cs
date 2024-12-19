@@ -23,13 +23,15 @@ public class Bullet:GameObject
         Position += Direction * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
         if (!_isEnemy)
         {
-            foreach (Enemy enemy in levelManager.ItemSpawner.GetEnemies())
+            foreach (Enemy enemy in levelManager.GameObjects.OfType<Enemy>().ToList())
             {
                 if (enemy.Rect.Intersects(Rect))
                 {
-                    levelManager.ItemSpawner.RemoveEnemy(enemy);
+                    levelManager.RemoveGameObject(enemy);
                     levelManager.IncreaseScore();
-                    levelManager.RemoveBullet(this);
+                    levelManager.AddGameObject(new Explosion(Position));
+                    levelManager.ExplosionSoundEffect.Play();
+                    levelManager.RemoveGameObject(this);
                 }
             }
         }
@@ -38,17 +40,17 @@ public class Bullet:GameObject
             if (levelManager.Player.Rect.Intersects(Rect))
             {
                 levelManager.Player.Health--;
-                levelManager.RemoveBullet(this);
+                levelManager.RemoveGameObject(this);
             }
         }
         
 
         if (!_isEnemy && Position.Y <0)
         {
-            levelManager.RemoveBullet(this);
+            levelManager.RemoveGameObject(this);
         }else if (Position.Y > levelManager.ScreenHeight)
         {
-            levelManager.RemoveBullet(this);
+            levelManager.RemoveGameObject(this);
         }
     }
     

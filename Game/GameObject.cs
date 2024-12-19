@@ -26,7 +26,7 @@ public class GameObject
     }
     
     public virtual void Update(GameTime gameTime, LevelManager levelManager) {
-        
+        Sprite.Update(gameTime);
     }
     
     public void Draw(SpriteBatch spriteBatch,SpriteSheet spriteSheet) {

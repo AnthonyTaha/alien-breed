@@ -14,17 +14,17 @@
 #---------------------------------- Content ---------------------------------#
 /importer:TextureImporter
 /processor:TextureProcessor
-/build:sprite_sheet.png
+/build:sprites/sprite_sheet.png
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
-/build:font.spritefont
+/build:font/font.spritefont
 /importer:WavImporter
 /processor:SoundEffectProcessor
-/build:shoot.wav
+/build:audio/shoot.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
-/build:explosion.wav
+/build:audio/explosion.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
-/build:powerup.wav
+/build:audio/powerup.wav

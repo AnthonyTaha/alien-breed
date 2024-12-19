@@ -29,7 +29,7 @@ public class Game1 : Microsoft.Xna.Framework.Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
-        _spriteSheet.LoadSheet(Content,"sprite_sheet",12,2);
+        _spriteSheet.LoadSheet(Content,"sprites/sprite_sheet",12,2);
         _levelManager.LoadContent(Content,GraphicsDevice,_spriteSheet);
     }
 

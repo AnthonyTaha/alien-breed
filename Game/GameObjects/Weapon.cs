@@ -39,21 +39,21 @@ public class Weapon
         {
             if (_weaponType == WeaponType.Default)
             {
-                levelManager.AddBullet(new Bullet(new Vector2(0, -1), _speed,17,false,startingPosition,
+                levelManager.AddGameObject(new Bullet(new Vector2(0, -1), _speed,17,false,startingPosition,
                     new Vector2(2,2),new Vector2(16,16)));
             }
             else if(_weaponType == WeaponType.PowerUp)
             {
-                levelManager.AddBullet(new Bullet(new Vector2(1, -1), _speed,17,false,startingPosition,
+                levelManager.AddGameObject(new Bullet(new Vector2(1, -1), _speed,17,false,startingPosition,
                     new Vector2(2,2),new Vector2(16,16)));
-                levelManager.AddBullet(new Bullet(new Vector2(0, -1), _speed,17,false,startingPosition,
+                levelManager.AddGameObject(new Bullet(new Vector2(0, -1), _speed,17,false,startingPosition,
                     new Vector2(2,2),new Vector2(16,16)));
-                levelManager.AddBullet(new Bullet(new Vector2(-1, -1), _speed,17,false,startingPosition,
+                levelManager.AddGameObject(new Bullet(new Vector2(-1, -1), _speed,17,false,startingPosition,
                     new Vector2(2,2),new Vector2(16,16)));
             }
             else
             {
-                levelManager.AddBullet(new Bullet(new Vector2(0, 1), _speed,17,true,startingPosition,
+                levelManager.AddGameObject(new Bullet(new Vector2(0, 1), _speed,17,true,startingPosition,
                     new Vector2(2,2),new Vector2(16,16)));
             }
             

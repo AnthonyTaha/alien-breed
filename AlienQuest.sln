@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlienBreed", "AlienBreed.csproj", "{DFC7C48D-C43F-4DA8-885A-F9D505269038}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlienQuest", "AlienQuest.csproj", "{DFC7C48D-C43F-4DA8-885A-F9D505269038}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

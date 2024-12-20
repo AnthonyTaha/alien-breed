@@ -1,7 +1,7 @@
 using System;
 using System.Xml.Serialization;
 
-namespace AlienQuest.Game;
+namespace AlienQuest.Game.Utils;
 public class Save
 {
     [XmlAttribute("player")] 

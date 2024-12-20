@@ -1,2 +1,4 @@
-﻿using var game = new AlienQuest.Game.Game1();
+﻿using AlienQuest.Game.Engine;
+
+using var game = new Game1();
 game.Run();

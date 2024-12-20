@@ -1,4 +1,6 @@
 using System;
+using AlienQuest.Game.Engine;
+using AlienQuest.Game.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;

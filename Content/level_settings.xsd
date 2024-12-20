@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://example.com/levelSettings"
-           xmlns="http://example.com/levelSettings"
+           targetNamespace="http://www.uga.fr/l3-miage/alien-quest/levelSettings"
+           xmlns="http://www.uga.fr/l3-miage/alien-quest/levelSettings"
            elementFormDefault="qualified">
     <xs:element name="levelSettings">
         <xs:complexType>

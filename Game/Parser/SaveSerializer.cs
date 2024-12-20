@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+using AlienQuest.Game.Utils;
 using Microsoft.Xna.Framework.Content;
 
 namespace AlienQuest.Game.Parser;
@@ -23,7 +24,6 @@ public class SaveSerializer
         {
             foreach (XmlNode saveNode in saveNodes)
             {
-                Console.WriteLine("test");
                 Save save = new Save(saveNode.Attributes["player"]?.Value,
                     int.Parse(saveNode.Attributes["score"]?.Value),saveNode.Attributes["date"]?.Value);
                 

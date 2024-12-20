@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using AlienQuest.Game.Engine;
 using Microsoft.Xna.Framework;
 
 namespace AlienQuest.Game.GameObjects;

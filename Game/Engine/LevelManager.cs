@@ -1,18 +1,18 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using AlienQuest.Game.GameObjects;
+using AlienQuest.Game.Utils;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AlienQuest.Game;
+namespace AlienQuest.Game.Engine;
 
 public class LevelManager
 {
     private GameState _gameState;
-    
+    private LevelLoader _levelLoader;
     private Camera _camera = new();
     private List<GameObject> _gameObjects = new();
     private Player _player;
@@ -23,8 +23,8 @@ public class LevelManager
     
     private int _score;
     private int _scoreInterval;
-    private int _scoreIntervalCap = 100;
-    private int _scoreIncreaseAmount = 10;
+    private int _scoreIntervalCap;
+    private int _scoreIncreaseAmount;
     
     private SpriteFont _font;
     
@@ -45,7 +45,9 @@ public class LevelManager
     public void LoadContent(ContentManager content,GraphicsDevice graphics, SpriteSheet spriteSheet)
     {
         _gameState = GameState.Playing;
-        
+        _levelLoader = new LevelLoader();
+        _levelLoader.LoadLevel(content);
+        _scoreInterval = _levelLoader.ScoreInterval;
         //Load Content
         _font = content.Load<SpriteFont>("font/font");
         _firingSoundEffect = content.Load<SoundEffect>("audio/shoot");
@@ -58,11 +60,11 @@ public class LevelManager
         
         // Get position at bottom center
         float xPosition = _screenWidth / 2f;
-        float yPosition = _screenHeight - 32;
+        float yPosition = _screenHeight - _levelLoader.PlayerYOffset;
         _player = new Player(new Vector2(xPosition,yPosition),"player1",content);
         
         //Setup Item Spawner
-        _itemSpawner = new ItemSpawner(100);
+        _itemSpawner = new ItemSpawner(_levelLoader.SpawnInterval);
         
         AddGameObject(_player);
     }

@@ -1,4 +1,4 @@
-namespace AlienQuest.Game;
+namespace AlienQuest.Game.Engine;
 
 public enum GameState
 {

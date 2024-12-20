@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace AlienQuest.Game;
+namespace AlienQuest.Game.Engine;
 
 public class Game1 : Microsoft.Xna.Framework.Game
 {

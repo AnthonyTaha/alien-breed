@@ -1,11 +1,10 @@
 using System;
 using System.IO;
 using System.Xml;
-using System.Xml.Schema;
 using AlienQuest.Game.utils;
 using Microsoft.Xna.Framework.Content;
 
-namespace AlienQuest.Game;
+namespace AlienQuest.Game.Utils;
 
 public class PlayerLoader
 {
@@ -25,7 +24,7 @@ public class PlayerLoader
     public void LoadPlayer(string playerName, ContentManager content)
     {
         var settings = new XmlReaderSettings();
-        settings.Schemas.Add("http://example.com/players",content.RootDirectory+"/players.xsd");
+        settings.Schemas.Add("http://www.uga.fr/l3-miage/alien-quest/players",content.RootDirectory+"/players.xsd");
         settings.ValidationType = ValidationType.Schema;
         settings.ValidationEventHandler += XmlUtils.ValidationCallBack;
         string filePath = Path.Combine(content.RootDirectory, "players.xml");

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace AlienQuest.Game;
+namespace AlienQuest.Game.Utils;
 [XmlRoot(ElementName="saves",Namespace = "http://example.com/saves", IsNullable=false)] 
 public class Saves
 {

@@ -1,10 +1,8 @@
-using System;
-using AlienQuest;
+using AlienQuest.Game.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
-namespace AlienQuest.Game;
+namespace AlienQuest.Game.GameObjects;
 
 public class GameObject
 {

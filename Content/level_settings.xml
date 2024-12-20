@@ -1,6 +1,6 @@
-<levelSettings xmlns="http://example.com/levelSettings"
+<levelSettings xmlns="http://www.uga.fr/l3-miage/alien-quest/levelSettings"
                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                     xsi:schemaLocation="http://example.com/levelSettings level_settings.xsd">
+                     xsi:schemaLocation="http://www.uga.fr/l3-miage/alien-quest/levelSettings level_settings.xsd">
     <level playerYOffset="32" scoreInterval="100" loadFromSave="true">
         <itemSpawner spawnInterval="100"/>
     </level>
